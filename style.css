@@ -39,7 +39,7 @@ div {
 }
 
 div b {
-    font-family: recursive-mono, monospace;
+    font-family: Recursive, monospace;
     font-size: 16px;
     padding: 0 0.3rem;
     border-style: solid;
