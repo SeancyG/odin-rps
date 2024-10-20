@@ -1,0 +1,61 @@
+/* style.css */
+
+* {
+    box-sizing: border-box;
+}
+
+.recursive-mono {
+    font-family: "Recursive", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0,
+      "CASL" 0.5,
+      "CRSV" 0.5,
+      "MONO" 1;
+  }
+
+body {
+    background-color: #551F13;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    font-family: Zain, sans-serif;
+    color: snow;
+}
+
+div {
+    flex: 0 1 auto;
+    max-width: 500px;
+    background-color: #551F13;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: snow;
+    padding: 1.5rem 3.5rem;
+    font-size: 20px;
+}
+
+div b {
+    font-family: recursive-mono, monospace;
+    font-size: 16px;
+    padding: 0 0.3rem;
+    border-style: solid;
+    border-color: snow;
+    border-width: 1px;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+ul {
+    margin: 0 0;
+}
+
+li {
+    margin-left: 0;
+}
