@@ -38,8 +38,8 @@ function playGame() {
     let round = 1;
 
     function playRound (humanChoice, computerChoice) {
-        humanChoice = humanChoice.toLower();
-        if (humanChoice.toLower() === rockVal.toLower() || humanChoice.toLower() === rockValS.toLower()) {
+        humanChoice = humanChoice.toLowerCase();
+        if (humanChoice.toLowerCase() === rockVal.toLowerCase() || humanChoice.toLowerCase() === rockValS.toLowerCase()) {
             if (computerChoice === rockVal) {
                 console.log(tieMessage);
             } else if (computerChoice === paperVal) {
@@ -49,8 +49,8 @@ function playGame() {
                 console.log(`You win! ${scissorsRockMessage}`);
                 humanScore++;
             }
-            round += 1;
-        } else if (humanChoice.toLower() === paperVal.toLower() || humanChoice.toLower() === paperValS.toLower()) {
+            round ++;
+        } else if (humanChoice.toLowerCase() === paperVal.toLowerCase() || humanChoice.toLowerCase() === paperValS.toLowerCase()) {
             if (computerChoice === paperVal) {
                 console.log(tieMessage);
             } else if (computerChoice === scissorsVal) {
@@ -60,8 +60,8 @@ function playGame() {
                 console.log(`You win! ${rockPaperMessage}`);
                 humanScore++;
             }
-            round += 1;
-        } else if (humanChoice.toLower() === scissorsVal.toLower() || humanChoice.toLower() === scissorsValS.toLower()) {
+            round ++;
+        } else if (humanChoice.toLowerCase() === scissorsVal.toLowerCase() || humanChoice.toLowerCase() === scissorsValS.toLowerCase()) {
             if (computerChoice === scissorsVal) {
                 console.log(tieMessage);
             } else if (computerChoice === rockVal) {
@@ -71,11 +71,10 @@ function playGame() {
                 console.log(`You win! ${paperScissorsMessage}`);
                 humanScore++;
             }
-            round += 1;
+            round ++;
         } else if (humanChoice === '') {
             console.log('Fine, I\'ll choose for you.')
             playRound(getComputerChoice(), computerChoice);
-            round += 1;
         } else {
             console.log('I didn\'t understand that. Please try again.');
             playRound(getHumanChoice(), computerChoice);
