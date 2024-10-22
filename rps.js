@@ -1,8 +1,5 @@
 // rps.js
 
-let humanScore = 0;
-let computerScore = 0;
-
 const rockVal = 'Rock';
 const rockValS = 'R';
 const paperVal = 'Paper';
@@ -35,37 +32,68 @@ function getHumanChoice (message = 'Make your choice. "Rock", "Paper", or "Sciss
     return humanChoice;
 }
 
-function playRound (humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLower();
-    if (humanChoice.toLower() === rockVal.toLower() || humanChoice.toLower() === rockValS.toLower()) {
-        if (computerChoice === rockVal) {
-            console.log(tieMessage);
-        } else if (computerChoice === paperVal) {
-            console.log(`Computer wins. ${rockPaperMessage}`);
-        } else if (computerChoice === scissorsVal) {
-            console.log(`You win! ${scissorsRockMessage}`);
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    let round = 1;
+
+    function playRound (humanChoice, computerChoice) {
+        humanChoice = humanChoice.toLower();
+        if (humanChoice.toLower() === rockVal.toLower() || humanChoice.toLower() === rockValS.toLower()) {
+            if (computerChoice === rockVal) {
+                console.log(tieMessage);
+            } else if (computerChoice === paperVal) {
+                console.log(`Computer wins. ${rockPaperMessage}`);
+                computerScore++;
+            } else if (computerChoice === scissorsVal) {
+                console.log(`You win! ${scissorsRockMessage}`);
+                humanScore++;
+            }
+            round += 1;
+        } else if (humanChoice.toLower() === paperVal.toLower() || humanChoice.toLower() === paperValS.toLower()) {
+            if (computerChoice === paperVal) {
+                console.log(tieMessage);
+            } else if (computerChoice === scissorsVal) {
+                console.log(`Computer wins. ${paperScissorsMessage}`);
+                computerScore++;
+            } else if (computerChoice === rockVal) {
+                console.log(`You win! ${rockPaperMessage}`);
+                humanScore++;
+            }
+            round += 1;
+        } else if (humanChoice.toLower() === scissorsVal.toLower() || humanChoice.toLower() === scissorsValS.toLower()) {
+            if (computerChoice === scissorsVal) {
+                console.log(tieMessage);
+            } else if (computerChoice === rockVal) {
+                console.log(`Computer wins. ${scissorsRockMessage}`);
+                computerScore++;
+            } else if (computerChoice === paperVal) {
+                console.log(`You win! ${paperScissorsMessage}`);
+                humanScore++;
+            }
+            round += 1;
+        } else if (humanChoice === '') {
+            console.log('Fine, I\'ll choose for you.')
+            playRound(getComputerChoice(), computerChoice);
+            round += 1;
+        } else {
+            console.log('I didn\'t understand that. Please try again.');
+            playRound(getHumanChoice(), computerChoice);
         }
-    } else if (humanChoice.toLower() === paperVal.toLower() || humanChoice.toLower() === paperValS.toLower()) {
-        if (computerChoice === paperVal) {
-            console.log(tieMessage);
-        } else if (computerChoice === scissorsVal) {
-            console.log(`Computer wins. ${paperScissorsMessage}`);
-        } else if (computerChoice === rockVal) {
-            console.log(`You win! ${rockPaperMessage}`);
-        }
-    } else if (humanChoice.toLower() === scissorsVal.toLower() || humanChoice.toLower() === scissorsValS.toLower()) {
-        if (computerChoice === scissorsVal) {
-            console.log(tieMessage);
-        } else if (computerChoice === rockVal) {
-            console.log(`Computer wins. ${scissorsRockMessage}`);
-        } else if (computerChoice === paperVal) {
-            console.log(`You win! ${paperScissorsMessage}`);
-        }
-    } else if (humanChoice === '') {
-        console.log('Fine, I\'ll choose for you.')
-        playRound(humanChoice, computerChoice);
+    }
+
+    while (round < 6) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+
+    if (humanScore > computerScore) {
+        console.log('You win! Let this be a lesson to everyone who ever doubted you.');
+        console.log(`You: ${humanScore}. Computer: ${computerScore}`);
+    } else if (computerScore > humanScore) {
+        console.log('Wow, this must be so embarrassing for you. Don\'t worry, I probably won\'t tell anyone.');
+        console.log(`Computer: ${computerScore}. You: ${humanScore}.`);
     } else {
-        console.log('I didn\'t understand that. Please try again.');
-        playRound(getHumanChoice, computerChoice);
+        console.log(tieMessage);
+        console.log(`You: ${humanScore}. Computer: ${computerScore}`);
     }
 }
