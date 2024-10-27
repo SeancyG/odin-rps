@@ -35,6 +35,10 @@ const buttons = document.querySelector('.buttons-container');
 const resultHeader = document.querySelector('h2.result');
 const resultTagline = document.querySelector('p.result');
 
+const humanScoreDisplay = document.querySelector('#human-score');
+const computerScoreDisplay = document.querySelector('#computer-score');
+const roundDisplay = document.querySelector('span.round');
+
 function getComputerChoice () {
     let choiceNum = Math.random() * 3;
     let computerChoice = '';
@@ -78,44 +82,58 @@ function playRound (humanChoice, computerChoice) {
 
     if (humanChoice.toLowerCase() === rockVal.toLowerCase() || humanChoice.toLowerCase() === rockValS.toLowerCase()) {
         if (computerChoice === rockVal) {
-            console.log(tieMessage);
+            console.log(`${tieHeaderRound} Human choice: ${humanChoice}. Computer choice: ${computerChoice}.`);
+            resultHeader.textContent = tieHeaderRound;
+            resultTagline.textContent = tieTaglineRound;
         } else if (computerChoice === paperVal) {
-            console.log(`Computer wins. ${rockPaperMessage}`);
+            console.log(`${computerHeaderRound} Human choice: ${humanChoice}. Computer choice: ${computerChoice}.`);
+            resultHeader.textContent = computerHeaderRound;
+            resultTagline.textContent = rockPaperTagline;
             computerScore++;
         } else if (computerChoice === scissorsVal) {
-            console.log(`You win! ${scissorsRockMessage}`);
+            console.log(`${humanHeaderRound} Human choice: ${humanChoice}. Computer choice: ${computerChoice}.`);
+            resultHeader.textContent = humanHeaderRound;
+            resultTagline.textContent = scissorsRockTagline;
             humanScore++;
         }
         round++;
     } else if (humanChoice.toLowerCase() === paperVal.toLowerCase() || humanChoice.toLowerCase() === paperValS.toLowerCase()) {
         if (computerChoice === paperVal) {
-            console.log(tieMessage);
+            console.log(`${tieHeaderRound} Human choice: ${humanChoice}. Computer choice: ${computerChoice}.`);
+            resultHeader.textContent = tieHeaderRound;
+            resultTagline.textContent = tieTaglineRound;
         } else if (computerChoice === scissorsVal) {
-            console.log(`Computer wins. ${paperScissorsMessage}`);
+            console.log(`${computerHeaderRound} Human choice: ${humanChoice}. Computer choice: ${computerChoice}.`);
+            resultHeader.textContent = computerHeaderRound;
+            resultTagline.textContent = paperScissorsTagline;
             computerScore++;
         } else if (computerChoice === rockVal) {
-            console.log(`You win! ${rockPaperMessage}`);
+            console.log(`${humanHeaderRound} Human choice: ${humanChoice}. Computer choice: ${computerChoice}.`);
+            resultHeader.textContent = humanHeaderRound;
+            resultTagline.textContent = rockPaperTagline;
             humanScore++;
         }
         round++;
     } else if (humanChoice.toLowerCase() === scissorsVal.toLowerCase() || humanChoice.toLowerCase() === scissorsValS.toLowerCase()) {
         if (computerChoice === scissorsVal) {
-            console.log(tieMessage);
+            console.log(`${tieHeaderRound} Human choice: ${humanChoice}. Computer choice: ${computerChoice}.`);
+            resultHeader.textContent = tieHeaderRound;
+            resultTagline.textContent = tieTaglineRound;
         } else if (computerChoice === rockVal) {
-            console.log(`Computer wins. ${scissorsRockMessage}`);
+            console.log(`${computerHeaderRound} Human choice: ${humanChoice}. Computer choice: ${computerChoice}.`);
+            resultHeader.textContent = computerHeaderRound;
+            resultTagline.textContent = scissorsRockTagline;
             computerScore++;
         } else if (computerChoice === paperVal) {
-            console.log(`You win! ${paperScissorsMessage}`);
+            console.log(`${humanHeaderRound} Human choice: ${humanChoice}. Computer choice: ${computerChoice}.`);
+            resultHeader.textContent = humanHeaderRound;
+            resultTagline.textContent = paperScissorsTagline;
             humanScore++;
         }
         round ++;
-    } else if (humanChoice === '') {
-        console.log('Fine, I\'ll choose for you.')
-        playRound(getComputerChoice(), computerChoice);
-    } else {
-        console.log('I didn\'t understand that. Please try again.');
-        playRound(getHumanChoice(), computerChoice);
     }
+
+    displayScores();
 
     if (humanScore >= maxScore || computerScore >= maxScore) {
         displayEndMessage();
@@ -123,7 +141,14 @@ function playRound (humanChoice, computerChoice) {
     }
 }
 
+function displayScores() {
+    humanScoreDisplay.textContent = humanScore;
+    computerScoreDisplay.textContent = computerScore;
+    roundDisplay.textContent = round;
+}
+
 function displayEndMessage() {
+    console.log('Game Over');
     if (humanScore > computerScore) {
         resultHeader.textContent = humanHeaderEnd;
         resultTagline.textContent = humanTaglineEnd;
@@ -137,5 +162,9 @@ function displayEndMessage() {
 }
 
 function resetGame() {
-
+    console.log('Game Reset');
+    gameComplete = false;
+    round = 1;
+    humanScore = 0;
+    computerScore = 0;
 }
