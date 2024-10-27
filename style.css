@@ -89,8 +89,8 @@ li {
     gap: 16px;
 }
 
-.score,
-.round {
+div.score,
+div.round {
     flex: 1 1 auto;
 }
 
