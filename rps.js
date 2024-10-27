@@ -19,9 +19,9 @@ const paperScissorsTagline = 'Scissors cuts paper.';
 const scissorsRockTagline = 'Rock crushes scissors.';
 
 const humanHeaderEnd = 'Game complete. You win!';
-const humanTaglineEnd = 'Let this be a lesson to everyone who ever doubted you.\nSelect below to start a new round.';
+const humanTaglineEnd = 'Let this be a lesson to everyone who ever doubted you. Select below to start a new round.';
 const computerHeaderEnd = 'Game over. Computer wins...';
-const computerTaglineEnd = 'Wow, this must be so embarrassing for you. Don\'t worry, I probably won\'t tell anyone.\nSelect below to start a new round.';
+const computerTaglineEnd = 'Wow, this must be so embarrassing for you. Don\'t worry, I probably won\'t tell anyone. Select below to start a new round.';
 
 let humanScore = 0;
 let computerScore = 0;
