@@ -2,6 +2,12 @@
 
 * {
     box-sizing: border-box;
+
+    --main-bg: #551F13;
+    --text-color: snow;
+    --borders-color: snow;
+    --hover-text-color: #551F13;
+    --hover-bg: snow;
 }
 
 .recursive-mono {
@@ -17,25 +23,27 @@
   }
 
 body {
-    background-color: #551F13;
+    background-color: var(--main-bg);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 60vh;
     font-family: Zain, sans-serif;
-    color: snow;
+    color: var(--text-color);
 }
 
 div {
+    background-color: var(--main-bg);
+}
+
+.game-container {
     flex: 0 1 auto;
-    max-width: 500px;
-    background-color: #551F13;
+    max-width: 700px;
     border-radius: 8px;
     border-style: solid;
     border-width: 4px;
-    border-color: snow;
+    border-color: var(--borders-color);
     padding: 1.5rem 3.5rem;
-    font-size: 20px;
 }
 
 div b {
@@ -43,8 +51,23 @@ div b {
     font-size: 16px;
     padding: 0 0.3rem;
     border-style: solid;
-    border-color: snow;
+    border-color: var(--borders-color);
     border-width: 1px;
+}
+
+button {
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: var(--borders-color);
+    color: var(--text-color);
+    background-color: var(--main-bg);
+    padding: 0.5rem 1rem;
+}
+
+button:hover {
+    background-color: var(--hover-bg);
+    color: var(--hover-text-color);
 }
 
 h1 {
@@ -58,4 +81,26 @@ ul {
 
 li {
     margin-left: 0;
+}
+
+.score-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.score,
+.round {
+    flex: 1 1 auto;
+}
+
+.result-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 }
